@@ -1,0 +1,767 @@
+<?xml version="1.0"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="exo_vone" xmlns:xacro="http://ros.org/wiki/xacro">
+
+#Added Visuals
+  <xacro:macro name="body_color">
+    <visual>
+    <material>
+        <ambient>255 204 203 1</ambient>
+        <diffuse>255 204 203 1</diffuse>
+        <specular>0.1 0.1 0.1 1</specular>
+        <emissive>0 0 0 0</emissive>
+    </material>
+    </visual>
+  </xacro:macro>
+
+  <xacro:macro name="leg_color">
+    <visual>
+    <material>
+        <ambient>255 152 0 1</ambient>
+        <diffuse>255 152 0 1</diffuse>
+        <specular>0.1 0.1 0.1 1</specular>
+        <emissive>0 0 0 0</emissive>
+    </material>
+    </visual>
+  </xacro:macro>
+
+  <xacro:macro name="wheel_color">
+    <visual>
+    <material>
+        <ambient>60 60 60 1</ambient>
+        <diffuse>60 60 60 1</diffuse>
+        <specular>0.1 0.1 0.1 1</specular>
+        <emissive>0 0 0 0</emissive>
+    </material>
+    </visual>
+  </xacro:macro>
+
+  <xacro:macro name="shoe_color">
+    <visual>
+    <material>
+        <ambient>135 206 235 1</ambient>
+        <diffuse>135 206 235 1</diffuse>
+        <specular>0.1 0.1 0.1 1</specular>
+        <emissive>0 0 0 0</emissive>
+    </material>
+    </visual>
+  </xacro:macro>
+
+  # Add this before base link
+  <link name="dummy_link"></link>
+  <link
+    name="body">
+    <inertial>
+      <origin
+        xyz="0.0721703450880188 -0.0711850762110267 0.325437570168997"
+        rpy="0 0 0" />
+      <mass
+        value="40.0322700838983" />
+      <inertia
+        ixx="1.12242433869777"
+        ixy="0.0135694513781301"
+        ixz="-8.52864632798917E-05"
+        iyy="0.8604760758101"
+        iyz="-0.0229895386625281"
+        izz="0.86890767646624" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://exo_vone/meshes/body.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://exo_vone/meshes/body.STL" />
+      </geometry>
+    </collision>
+  </link>
+# Add this after base link
+  <joint name="dummy_joint" type="fixed">
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <parent link="dummy_link"/>
+      <child link="body"/>
+  </joint>
+
+  <link
+    name="leftthigh">
+    <inertial>
+      <origin
+        xyz="-0.00536778004792505 -0.227132301681399 0.0110924986446574"
+        rpy="0 0 0" />
+      <mass
+        value="0.563007071942983" />
+      <inertia
+        ixx="0.0108814890246219"
+        ixy="-0.000253684328401118"
+        ixz="1.54879514035375E-06"
+        iyy="0.000147965154666073"
+        iyz="6.18911123078994E-05"
+        izz="0.0109763459714468" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://exo_vone/meshes/leftthigh.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.83921568627451 0.470588235294118 0.368627450980392 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://exo_vone/meshes/leftthigh.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="leftthighjoint"
+    type="revolute">
+    <origin
+      xyz="0.29555 -0.049096 0.03"
+      rpy="1.5708 -0.03881 1.5708" />
+    <parent
+      link="body" />
+    <child
+      link="leftthigh" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-0.7"
+      upper="0.7"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="leftknee">
+    <inertial>
+      <origin
+        xyz="-0.2050564118263 -0.00956594644923981 -0.0103304354854488"
+        rpy="0 0 0" />
+      <mass
+        value="0.6069234730997" />
+      <inertia
+        ixx="0.000220783749580585"
+        ixy="-0.000606622090299375"
+        ixz="9.7203980224204E-06"
+        iyy="0.013711480308962"
+        iyz="-1.98267817084477E-06"
+        izz="0.0138505508080809" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://exo_vone/meshes/leftknee.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://exo_vone/meshes/leftknee.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="leftkneejoint"
+    type="revolute">
+    <origin
+      xyz="-0.012703 -0.5222 0"
+      rpy="0 0 1.532" />
+    <parent
+      link="leftthigh" />
+    <child
+      link="leftknee" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.7"
+      upper="0.7"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="leftshoe">
+    <inertial>
+      <origin
+        xyz="-0.0126541929702663 0.0572351863043321 -0.0889168953577859"
+        rpy="0 0 0" />
+      <mass
+        value="0.621318515868409" />
+      <inertia
+        ixx="0.00460577107937433"
+        ixy="0.000181415694080681"
+        ixz="-8.03394290424055E-07"
+        iyy="0.00159077626935315"
+        iyz="1.50811120899723E-05"
+        izz="0.00340229565651185" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://exo_vone/meshes/leftshoe.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://exo_vone/meshes/leftshoe.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="leftshoejoint"
+    type="revolute">
+    <origin
+      xyz="-0.46002 -0.021094 -0.024609"
+      rpy="0 0 0" />
+    <parent
+      link="leftknee" />
+    <child
+      link="leftshoe" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.7"
+      upper="0.7"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="rightthigh">
+    <inertial>
+      <origin
+        xyz="0.00323520741228955 0.227172685335919 0.0110924986446574"
+        rpy="0 0 0" />
+      <mass
+        value="0.563007071942982" />
+      <inertia
+        ixx="0.010885306021714"
+        ixy="-0.000152876877290307"
+        ixz="-9.67688209881082E-07"
+        iyy="0.000144148157573983"
+        iyz="-6.19029250409402E-05"
+        izz="0.0109763459714468" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://exo_vone/meshes/rightthigh.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.83921568627451 0.470588235294118 0.368627450980392 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://exo_vone/meshes/rightthigh.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rightthighjoint"
+    type="revolute">
+    <origin
+      xyz="-0.16345 -0.049096 0.03"
+      rpy="-1.5708 0 1.5708" />
+    <parent
+      link="body" />
+    <child
+      link="rightthigh" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-0.7"
+      upper="0.7"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="rightknee">
+    <inertial>
+      <origin
+        xyz="-0.205160365094109 0.00699027587207472 -0.0103304354854488"
+        rpy="0 0 0" />
+      <mass
+        value="0.6069234730997" />
+      <inertia
+        ixx="0.000210943270211191"
+        ixy="0.000484910924019683"
+        ixz="9.52900202741494E-06"
+        iyy="0.0137213207883314"
+        iyz="-2.75957801211138E-06"
+        izz="0.0138505508080809" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://exo_vone/meshes/rightknee.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://exo_vone/meshes/rightknee.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rightkneejoint"
+    type="revolute">
+    <origin
+      xyz="0.0077998 0.52229 0"
+      rpy="0 0 -1.6064" />
+    <parent
+      link="rightthigh" />
+    <child
+      link="rightknee" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.7"
+      upper="0.7"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="rightshoe">
+    <inertial>
+      <origin
+        xyz="-0.00978116927535799 -0.0577955352057424 -0.0910831049034314"
+        rpy="0 0 0" />
+      <mass
+        value="0.621318516161137" />
+      <inertia
+        ixx="0.00461634771833496"
+        ixy="-3.01871483278428E-05"
+        ixz="4.95280349416128E-08"
+        iyy="0.00158019962449932"
+        iyz="1.51024194916695E-05"
+        izz="0.00340229565376732" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://exo_vone/meshes/rightshoe.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://exo_vone/meshes/rightshoe.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rightshoejoint"
+    type="revolute">
+    <origin
+      xyz="-0.46023 0.016047 -0.025367"
+      rpy="0 0 0" />
+    <parent
+      link="rightknee" />
+    <child
+      link="rightshoe" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-0.7"
+      upper="0.7"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="frontwheel">
+    <inertial>
+      <origin
+        xyz="-0.000248159145543256 0.0355492834672292 -1.22418508663458E-09"
+        rpy="0 0 0" />
+      <mass
+        value="1.26482191163624" />
+      <inertia
+        ixx="0.00788423820434775"
+        ixy="3.85182284037093E-11"
+        ixz="8.98039607625485E-11"
+        iyy="0.00823409874040419"
+        iyz="-5.8640240900738E-10"
+        izz="0.0138855471441829" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://exo_vone/meshes/frontwheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://exo_vone/meshes/frontwheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="frontwheeljoint"
+    type="fixed">
+    <origin
+      xyz="0.071552 -0.94232 -0.92813"
+      rpy="1.5708 0 0.00060906" />
+    <parent
+      link="body" />
+    <child
+      link="frontwheel" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="leftwheel">
+    <inertial>
+      <origin
+        xyz="0.101615564094677 0.0180615166863338 0.0213166592302764"
+        rpy="0 0 0" />
+      <mass
+        value="1.26482191163624" />
+      <inertia
+        ixx="0.00788423820434795"
+        ixy="-4.36165755186645E-11"
+        ixz="8.74416237223078E-11"
+        iyy="0.0115238223153073"
+        iyz="-0.00278736826540503"
+        izz="0.01059582356928" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://exo_vone/meshes/leftwheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://exo_vone/meshes/leftwheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="leftwheeljoint"
+    type="fixed">
+    <origin
+      xyz="0.89882 0.84046 -0.92188"
+      rpy="0.70292 0 3.1416" />
+    <parent
+      link="body" />
+    <child
+      link="leftwheel" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="rightwheel">
+    <inertial>
+      <origin
+        xyz="0.101615564094677 0.0180615166863305 0.0213166592302794"
+        rpy="0 0 0" />
+      <mass
+        value="1.26482191163623" />
+      <inertia
+        ixx="0.00788423820434783"
+        ixy="-4.36163887507567E-11"
+        ixz="8.744146301709E-11"
+        iyy="0.0115238223153072"
+        iyz="-0.00278736826540497"
+        izz="0.0105958235692799" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://exo_vone/meshes/rightwheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://exo_vone/meshes/rightwheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="rightwheeljoint"
+    type="fixed">
+    <origin
+      xyz="-0.85925 0.84046 -0.92188"
+      rpy="0.70292 0 0" />
+    <parent
+      link="body" />
+    <child
+      link="rightwheel" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+
+    <!-- Adding Controllers -->
+  <ros2_control name="GazeboSystem" type="system">
+  <hardware>
+      <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+  </hardware>
+  # Velocity Controllers
+
+  <joint name="leftthighjoint">
+      <command_interface name="velocity">
+          <param name="min">-1000.0</param>
+          <param name="max">1000.0</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="leftkneejoint">
+      <command_interface name="velocity">
+          <param name="min">-1000.0</param>
+          <param name="max">1000.0</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="leftshoejoint">
+      <command_interface name="velocity">
+          <param name="min">-1000.0</param>
+          <param name="max">1000.0</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="rightthighjoint">
+      <command_interface name="velocity">
+          <param name="min">-1000.0</param>
+          <param name="max">1000.0</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="rightkneejoint">
+      <command_interface name="velocity">
+          <param name="min">-1000.0</param>
+          <param name="max">1000.0</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="rightshoejoint">
+      <command_interface name="velocity">
+          <param name="min">-1000.0</param>
+          <param name="max">1000.0</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+  </joint>
+
+  # Position Controller
+  <joint name="leftthighjoint">
+      <command_interface name="position">
+          <param name="min">-3.14</param>
+          <param name="max">3.14</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="leftkneejoint">
+      <command_interface name="position">
+          <param name="min">-3.14</param>
+          <param name="max">3.14</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="leftshoejoint">
+      <command_interface name="position">
+          <param name="min">-3.14</param>
+          <param name="max">3.14</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="rightthighjoint">
+      <command_interface name="position">
+          <param name="min">-3.14</param>
+          <param name="max">3.14</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="rightkneejoint">
+      <command_interface name="position">
+          <param name="min">-3.14</param>
+          <param name="max">3.14</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+  </joint>
+
+  <joint name="rightshoejoint">
+      <command_interface name="position">
+          <param name="min">-3.14</param>
+          <param name="max">3.14</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+  </joint>
+
+  </ros2_control>
+
+<!-- Gazebo Plugin -->
+  <gazebo>
+      <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+          <parameters>$(find exo_vone)/config/control.yaml</parameters>
+      </plugin>
+  </gazebo>
+
+  <gazebo reference="body">
+    <xacro:body_color />
+  </gazebo>
+  <gazebo reference="leftthigh">
+    <xacro:leg_color />
+  </gazebo>
+  <gazebo reference="leftknee">
+    <xacro:leg_color />
+  </gazebo>
+  <gazebo reference="leftshoe">
+    <xacro:shoe_color />
+  </gazebo>
+  <gazebo reference="rightthigh">
+    <xacro:leg_color />
+  </gazebo>
+  <gazebo reference="rightknee">
+    <xacro:leg_color />
+  </gazebo>
+  <gazebo reference="rightshoe">
+    <xacro:shoe_color />
+  </gazebo>
+  <gazebo reference="frontwheel">
+    <xacro:wheel_color />
+  </gazebo>
+  <gazebo reference="rightwheel">
+    <xacro:wheel_color />
+  </gazebo>
+  <gazebo reference="leftwheel">
+    <xacro:wheel_color />
+  </gazebo>
+
+</robot>
